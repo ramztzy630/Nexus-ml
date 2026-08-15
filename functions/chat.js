@@ -52,23 +52,23 @@ export async function onRequestPost(context) {
 "=== AKHIR DATABASE ===\n\n" +
 "Hero lain di luar 8 hero di atas belum ada datanya di database ini.";
 
-const payload = {
-    model: "google/gemini-2.5-flash",
-    messages: [
-        { role: "system", content: systemPrompt },
-        ...(body.messages
-            ? body.messages.filter(function(m) {
-                return m.role !== "system";
-            })
-            : [])
-    ],
-
-    tools: [
-        {
-            type: "openrouter:web_search"
-        }
-    ]
-};
+    const payload = {
+        model: "google/gemini-3.6-flash",
+        messages: [
+            { role: "system", content: systemPrompt },
+            ...(body.messages
+                ? body.messages.filter(function(m) {
+                    return m.role !== "system";
+                })
+                : [])
+        ],
+        tools: [
+            {
+                type: "openrouter:web_search"
+            }
+        ],
+        max_tokens: 2048 // <-- Penambahan di sini
+    };
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
