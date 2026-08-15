@@ -1,6 +1,6 @@
-export async function onRequestPost(context) {
-    const { request, env } = context;
-    const body = await request.json();
+exports.handler = async function(event, context) {
+
+    const body = JSON.parse(event.body);
 
     const systemPrompt = "Kamu adalah NEXUS AI, asisten resmi untuk website NEXUS ML (build Mobile Legends).\n\n" +
 "IDENTITAS:\n" +
@@ -71,29 +71,38 @@ export async function onRequestPost(context) {
                     return m.role !== "system";
                 })
                 : [])
-        ],
-        tools: [
-            {
-                type: "openrouter:web_search"
-            }
-        ],
-        max_tokens: 2048 // <-- Penambahan di sini
+        ]
     };
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + env.OPENROUTER_API_KEY,
-            "HTTP-Referer": "https://nexus-eaq.pages.dev",
-            "X-Title": "NEXUS ML"
-        },
-        body: JSON.stringify(payload)
-    });
+    try {
 
-    const data = await response.json();
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + process.env.OPENROUTER_API_KEY,
+                "HTTP-Referer": "https://nexusmlbb.netlify.app",
+                "X-Title": "NEXUS ML"
+            },
+            body: JSON.stringify(payload)
+        });
 
-    return new Response(JSON.stringify(data), {
-        headers: { "Content-Type": "application/json" }
-    });
-}
+        const data = await response.json();
+
+        return {
+            statusCode: 200,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        };
+
+    } catch (err) {
+
+        return {
+            statusCode: 500,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ error: { message: err.message } })
+        };
+
+    }
+
+};
