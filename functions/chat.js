@@ -8,7 +8,7 @@ export async function onRequestPost(context) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + env.GROQ_API_KEY
+            "Authorization": "Bearer " + envGROQ_API_KEY
         },
         body: JSON.stringify(body)
     });
