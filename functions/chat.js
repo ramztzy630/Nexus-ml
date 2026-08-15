@@ -76,7 +76,7 @@ export async function onRequestPost(context) {
     return new Response(JSON.stringify(data), {
         headers: { "Content-Type": "application/json" }
     });
-}ROLE: Tank, Crowd Control, Regen
+ROLE: Tank, Crowd Control, Regen
 ITEM_BUILD: Tough Boots, Dominance Ice, Chastise Pauldron, Blade Armor, Antique Quiras, Immortality
 HERO_COUNTER: Karrie, XBorg
 ALASAN_COUNTER: Karrie memberikan True Damage berdasarkan HP sehingga sangat efektif melawan Belerick. XBorg menyulitkan Belerick karena True Damage dan poke terus-menerus
