@@ -53,7 +53,7 @@ export async function onRequestPost(context) {
 "Hero lain di luar 8 hero di atas belum ada datanya di database ini.";
 
 const payload = {
-    model: "google/gemini-3.6-flash",
+    model: "google/gemini-2.5-flash",
     messages: [
         { role: "system", content: systemPrompt },
         ...(body.messages
