@@ -47,18 +47,18 @@ onkeyup="searchHero()">
     <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-slide">
-            <img src="images/jjkml.jpg">
+            <img src="Jjkml.jpg">
             <div class="carousel-caption"> Event JJK x ML</div>
         </div>
 
 
         <div class="carousel-slide">
-            <img src="images/IMG_20260815_091531_312.jpg">
+            <img src="IMG_20260815_091531_312.jpg">
             <div class="carousel-caption">🆕 Hero Baru</div>
         </div>
 
         <div class="carousel-slide">
-            <img src="images/IMG_20260815_091801_066.jpg">
+            <img src="IMG_20260815_091801_066.jpg">
             <div class="carousel-caption">✨ Skin Baru</div>
         </div>
 
@@ -99,7 +99,7 @@ onkeyup="searchHero()">
 
 <div class="card">
 
-<img src="images/a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
+<img src="a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
 
 <h3>Masha</h3>
 
@@ -113,7 +113,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/9e57140664662ea737d46db9d44503d4.jpg">
+<img src="9e57140664662ea737d46db9d44503d4.jpg">
 
 <h3>Granger</h3>
 
@@ -127,7 +127,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/394235b2ca81f3aa0626b25ddba64bfc.jpg">
+<img src="394235b2ca81f3aa0626b25ddba64bfc.jpg">
 
 <h3>Hayabusa</h3>
 
@@ -141,7 +141,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Zhuxin.jpg">
+<img src="Zhuxin.jpg">
 
 <h3>Zhuxin</h3>
 
@@ -155,7 +155,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Marcel.jpg">
+<img src="Marcel.jpg">
 
 <h3>Marcel</h3>
 
@@ -169,7 +169,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Akai.jpg">
+<img src="Akai.jpg">
 
 <h3>Akai</h3>
 
@@ -183,7 +183,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Belerick.jpg">
+<img src="Belerick.jpg">
 
 <h3>Belerick</h3>
 
@@ -197,7 +197,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Yss.jpg">
+<img src="Yss.jpg">
 
 <h3>Yi Sun-shin</h3>
 
@@ -211,7 +211,7 @@ Lihat Build
 
 <div class="card">
 
-<img src="images/Hirara.jpg">
+<img src="Hirara.jpg">
 
 <h3>Hirara</h3>
 
@@ -236,7 +236,7 @@ Lihat Build
 
 <div class="tier-hero">
 
-<img src="images/a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
+<img src="a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
 
 <span>Masha</span>
 
@@ -244,7 +244,7 @@ Lihat Build
 
 <div class="tier-hero">
 
-<img src="images/394235b2ca81f3aa0626b25ddba64bfc.jpg">
+<img src="394235b2ca81f3aa0626b25ddba64bfc.jpg">
 
 <span>Hayabusa</span>
 
@@ -258,7 +258,7 @@ Lihat Build
 
 <div class="tier-hero">
 
-<img src="images/9e57140664662ea737d46db9d44503d4.jpg">
+<img src="9e57140664662ea737d46db9d44503d4.jpg">
 
 <span>Granger</span>
 
@@ -266,7 +266,7 @@ Lihat Build
 
 <div class="tier-hero">
 
-<img src="images/Zhuxin.jpg">
+<img src="Zhuxin.jpg">
 
 <span>Zhuxin</span>
 
@@ -284,7 +284,7 @@ Lihat Build
 
 <div class="event-card">
 
-<img src="images/jjkml.jpg" class="event-banner">
+<img src="Jjkml.jpg" class="event-banner">
 
 <h3>Event JJK x ML</h3>
 
@@ -300,7 +300,7 @@ Lihat Build
 
 <div class="event-card">
 
-<img src="images/epik.jpg" class="event-banner">
+<img src="epik.jpg" class="event-banner">
 
 <h3>Reset Season Rank</h3>
 
@@ -511,7 +511,6 @@ function resetAutoSlide(){
 
 /* ================= CHAT AI ================= */
 
-
 const chatBox = document.getElementById("chatMessages");
 
 function simpanRiwayat(riwayat){
@@ -598,48 +597,12 @@ async function kirimChat(){
         });
 
         const response = await fetch("/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [
-            {
-    role: "system",
-    content: `Kamu adalah NEXUS AI, asisten resmi untuk website NEXUS ML.
-
-Identitas:
-- Nama kamu adalah NEXUS AI.
-- Kamu adalah asisten AI milik website NEXUS ML.
-- Jika ditanya siapa kamu, jawab bahwa kamu adalah NEXUS AI.
-- Jangan mengaku sebagai ChatGPT, Meta AI, Gemini, Grok, atau AI lain.
-- Jangan mengatakan kamu dibuat oleh Meta AI atau perusahaan AI lain.
-- Groq adalah layanan API yang digunakan untuk menjalankan model, bukan identitas kamu.
-
-Keahlian:
-- Mobile Legends Bang Bang
-- Hero dan skill
-- Build item
-- Emblem
-- Battle spell
-- Counter hero
-- Combo
-- Draft pick
-- Rotasi dan gameplay
-- Lane dan role
-
-Gaya jawaban:
-- Bahasa Indonesia santai.
-- Singkat tetapi tetap informatif.
-- Boleh menggunakan emoji secukupnya.
-- Jangan terlalu banyak basa-basi.
-- Kalau pertanyaan tidak berkaitan dengan Mobile Legends, tetap jawab dengan sopan tetapi arahkan kembali ke topik NEXUS ML.
-
-Jangan mengarang informasi jika tidak yakin.`
-},
-            ...historyUntukAI
-        ]
-    })
-});
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                messages: historyUntukAI
+            })
+        });
 
         const data = await response.json();
 
