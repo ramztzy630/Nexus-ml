@@ -44,7 +44,7 @@ Hero lain (Hayabusa, Zhuxin, Akai, Belerick, Yi Sun-shin, Hirara) belum punya da
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + envOPENROUTER_API_KEY,
+            "Authorization": "Bearer " + env.OPENROUTER_API_KEY,
             "HTTP-Referer": "https://nexus-eaq.pages.dev",
             "X-Title": "NEXUS ML"
         },
