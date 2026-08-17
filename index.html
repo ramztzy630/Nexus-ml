@@ -488,6 +488,123 @@ Lihat Build
 </div>
 
 <script>
+    
+ /* ================= AUTH SYSTEM ================= */
+
+let currentUsername = null;
+
+async function checkAuthStatus(){
+    try{
+        let res = await fetch("/api/me");
+        let data = await res.json();
+        if(data.loggedIn){
+            currentUsername = data.username;
+            document.getElementById("authTriggerBtn").innerText = "👤 " + data.username;
+        }else{
+            currentUsername = null;
+            document.getElementById("authTriggerBtn").innerText = "👤 Login";
+        }
+    }catch(err){
+        console.error("Gagal cek status login:", err);
+    }
+}
+
+checkAuthStatus();
+
+function handleAuthTrigger(){
+    if(currentUsername){
+        document.getElementById("profileUsername").innerText = currentUsername;
+        document.getElementById("profileModalOverlay").classList.add("open");
+    }else{
+        document.getElementById("loginModalOverlay").classList.add("open");
+    }
+}
+
+function closeAuthModal(e, id, force){
+    if(force || e.target.id === id){
+        document.getElementById(id).classList.remove("open");
+    }
+}
+
+function switchAuthModal(fromId, toId){
+    document.getElementById(fromId).classList.remove("open");
+    document.getElementById(toId).classList.add("open");
+}
+
+async function doRegister(){
+
+    let username = document.getElementById("regUsername").value.trim();
+    let password = document.getElementById("regPassword").value;
+    let confirmPassword = document.getElementById("regConfirmPassword").value;
+    let errorEl = document.getElementById("regError");
+
+    errorEl.innerText = "";
+
+    try{
+        let res = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password, confirmPassword })
+        });
+
+        let data = await res.json();
+
+        if(!res.ok){
+            errorEl.innerText = data.error || "Registrasi gagal.";
+            return;
+        }
+
+        switchAuthModal("registerModalOverlay", "loginModalOverlay");
+        document.getElementById("loginUsername").value = username;
+
+    }catch(err){
+        errorEl.innerText = "Gagal terhubung ke server.";
+    }
+
+}
+
+async function doLogin(){
+
+    let username = document.getElementById("loginUsername").value.trim();
+    let password = document.getElementById("loginPassword").value;
+    let errorEl = document.getElementById("loginError");
+
+    errorEl.innerText = "";
+
+    try{
+        let res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+            credentials: "include"
+        });
+
+        let data = await res.json();
+
+        if(!res.ok){
+            errorEl.innerText = data.error || "Login gagal.";
+            return;
+        }
+
+        currentUsername = data.username;
+        document.getElementById("authTriggerBtn").innerText = "👤 " + data.username;
+        document.getElementById("loginModalOverlay").classList.remove("open");
+
+    }catch(err){
+        errorEl.innerText = "Gagal terhubung ke server.";
+    }
+
+}
+
+async function doLogout(){
+
+    await fetch("/api/logout", { method: "POST", credentials: "include" });
+
+    currentUsername = null;
+    document.getElementById("authTriggerBtn").innerText = "👤 Login";
+    document.getElementById("profileModalOverlay").classList.remove("open");
+
+}   
 /* ================= MODAL EVENT DETAIL ================= */
 
 const dataEvent = {
