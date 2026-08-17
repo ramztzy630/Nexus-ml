@@ -392,7 +392,64 @@ Lihat Build
 © 2026 NEXUS ML
 
 </footer>
+<!-- ================= AUTH BUTTON ================= -->
 
+<div class="auth-btn-wrap" id="authBtnWrap">
+    <button class="auth-btn" id="authTriggerBtn" onclick="handleAuthTrigger()">👤 Login</button>
+</div>
+
+<!-- ================= MODAL LOGIN ================= -->
+
+<div class="auth-modal-overlay" id="loginModalOverlay" onclick="closeAuthModal(event,'loginModalOverlay')">
+    <div class="auth-modal">
+        <div class="auth-modal-header">
+            Login
+            <span class="event-modal-close" onclick="closeAuthModal(event,'loginModalOverlay',true)">✕</span>
+        </div>
+        <div class="auth-modal-body">
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <div class="auth-error" id="loginError"></div>
+            <button class="auth-submit-btn" onclick="doLogin()">Login</button>
+            <p class="auth-switch">Belum punya akun? <span onclick="switchAuthModal('loginModalOverlay','registerModalOverlay')">Daftar</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODAL REGISTER ================= -->
+
+<div class="auth-modal-overlay" id="registerModalOverlay" onclick="closeAuthModal(event,'registerModalOverlay')">
+    <div class="auth-modal">
+        <div class="auth-modal-header">
+            Daftar Akun
+            <span class="event-modal-close" onclick="closeAuthModal(event,'registerModalOverlay',true)">✕</span>
+        </div>
+        <div class="auth-modal-body">
+            <input type="text" id="regUsername" placeholder="Username (3-20 karakter)">
+            <input type="password" id="regPassword" placeholder="Password (min 6 karakter)">
+            <input type="password" id="regConfirmPassword" placeholder="Konfirmasi Password">
+            <div class="auth-error" id="regError"></div>
+            <button class="auth-submit-btn" onclick="doRegister()">Daftar</button>
+            <p class="auth-switch">Sudah punya akun? <span onclick="switchAuthModal('registerModalOverlay','loginModalOverlay')">Login</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODAL PROFIL ================= -->
+
+<div class="auth-modal-overlay" id="profileModalOverlay" onclick="closeAuthModal(event,'profileModalOverlay')">
+    <div class="auth-modal">
+        <div class="auth-modal-header">
+            Profil
+            <span class="event-modal-close" onclick="closeAuthModal(event,'profileModalOverlay',true)">✕</span>
+        </div>
+        <div class="auth-modal-body">
+            <div class="profile-avatar">👤</div>
+            <p class="profile-username" id="profileUsername"></p>
+            <button class="auth-submit-btn auth-logout-btn" onclick="doLogout()">Logout</button>
+        </div>
+    </div>
+</div>
 <!-- ================= CHAT AI WIDGET ================= -->
 
 <div class="chat-toggle" id="chatToggle" onclick="toggleChat()">
