@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXUS ML</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=100">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>NEXUS ML</h1>
+
+<p>Build • Counter • Tier List</p>
+
+<input
+type="text"
+id="searchHero"
+placeholder="🔍 Cari Hero..."
+onkeyup="searchHero()">
+
+<select id="filterRole" onchange="searchHero()">
+    <option value="all"> Semua Role</option>
+    <option value="fighter"> Fighter</option>
+    <option value="assassin"> Assassin</option>
+    <option value="marksman"> Marksman</option>
+    <option value="mage"> Mage</option>
+    <option value="tank"> Tank</option>
+    <option value="support"> Support</option>
+</select>
+
+</header>
+
+<!-- ================= CAROUSEL BANNER ================= -->
+
+<section class="carousel">
+
+    <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-slide">
+            <img src="images/Jjkml.jpg">
+            <div class="carousel-caption"> Event JJK x ML</div>
+        </div>
+
+
+        <div class="carousel-slide">
+            <img src="images/IMG_20260815_091531_312.jpg">
+            <div class="carousel-caption">🆕 Hero Baru</div>
+        </div>
+
+        <div class="carousel-slide">
+            <img src="images/IMG_20260815_091801_066.jpg">
+            <div class="carousel-caption">✨ Skin Baru</div>
+        </div>
+
+    </div>
+
+    <div class="carousel-dots" id="carouselDots">
+        <span class="dot active" onclick="gotoSlide(0)"></span>
+        <span class="dot" onclick="gotoSlide(1)"></span>
+        <span class="dot" onclick="gotoSlide(2)"></span>
+
+    </div>
+
+</section>
+
+<section class="menu">
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+🏠 Home
+</button>
+
+<button onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
+⚔ Hero
+</button>
+
+<button onclick="document.getElementById('tier').scrollIntoView({behavior:'smooth'})">
+📊 Tier List
+</button>
+
+<button onclick="document.getElementById('event').scrollIntoView({behavior:'smooth'})">
+📅 Event
+</button>
+
+</section>
+
+<h2 id="hero">🔥 Hero Populer</h2>
+
+<section class="hero-grid">
+
+<div class="card">
+
+<img src="images/a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
+
+<h3>Masha</h3>
+
+<p>Fighter</p>
+
+<button onclick="playClick('Masha.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/9e57140664662ea737d46db9d44503d4.jpg">
+
+<h3>Granger</h3>
+
+<p>Marksman</p>
+
+<button onclick="playClick('Granger.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/394235b2ca81f3aa0626b25ddba64bfc.jpg">
+
+<h3>Hayabusa</h3>
+
+<p>Assassin</p>
+
+<button onclick="playClick('Hayabusa.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Zhuxin.jpg">
+
+<h3>Zhuxin</h3>
+
+<p>Mage</p>
+
+<button onclick="playClick('Zhuxin.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Marcel.jpg">
+
+<h3>Marcel</h3>
+
+<p>Support</p>
+
+<button onclick="playClick('Marcel.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Akai.jpg">
+
+<h3>Akai</h3>
+
+<p>Tank</p>
+
+<button onclick="playClick('Akai.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Belerick.jpg">
+
+<h3>Belerick</h3>
+
+<p>Tank</p>
+
+<button onclick="playClick('Belerick.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Yss.jpg">
+
+<h3>Yi Sun-shin</h3>
+
+<p>Assasin/Marksman</p>
+
+<button onclick="playClick('YiSunShin.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Hirara.jpg">
+
+<h3>Hirara</h3>
+
+<p>Assasin</p>
+
+<button onclick="playClick('Hirara.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Ling.jpg">
+
+<h3>Ling</h3>
+
+<p>Assassin</p>
+
+<button onclick="playClick('Ling.html')">
+Lihat Build
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="images/Alucard.jpg">
+
+<h3>Alucard</h3>
+
+<p>Fighter</p>
+
+<button onclick="playClick('Alucard.html')">
+Lihat Build
+</button>
+
+</div>
+</section>
+
+<!-- ================= TIER LIST ================= -->
+
+<h2 id="tier" class="section-title">📊 Tier List</h2>
+
+<div class="tier-grid">
+
+<div class="tier-card splus">
+
+<div class="tier-rank">S+</div>
+
+<div class="tier-hero">
+
+<img src="images/a4bd2b3c8832d9710b3c8937c0d78c38.jpg">
+
+<span>Masha</span>
+
+</div>
+
+<div class="tier-hero">
+
+<img src="images/394235b2ca81f3aa0626b25ddba64bfc.jpg">
+
+<span>Hayabusa</span>
+
+</div>
+
+</div>
+
+<div class="tier-card s">
+
+<div class="tier-rank">S</div>
+
+<div class="tier-hero">
+
+<img src="images/9e57140664662ea737d46db9d44503d4.jpg">
+
+<span>Granger</span>
+
+</div>
+
+<div class="tier-hero">
+
+<img src="images/Zhuxin.jpg">
+
+<span>Zhuxin</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= EVENT ================= -->
+
+<h2 id="event" class="section-title">📅 Event MLBB</h2>
+
+<div class="event-grid">
+
+<div class="event-card">
+
+<img src="images/Jjkml.jpg" class="event-banner">
+
+<h3>Event JJK x ML</h3>
+
+<p>Berakhir dalam:</p>
+
+<div id="countdownJJK" class="event-timer">
+    Menghitung...
+</div>
+
+<button onclick="showEventDetail('jjk')">Detail</button>
+
+</div>
+
+<div class="event-card">
+
+<img src="images/Epik.jpg" class="event-banner">
+
+<h3>Reset Season Rank</h3>
+
+<p>Berakhir dalam:</p>
+
+<div id="countdownReset" class="event-timer">
+    Menghitung...
+</div>
+
+<button onclick="showEventDetail('reset')">Detail</button>
+
+</div>
+
+<div class="event-card">
+
+<div class="event-icon">🎁</div>
+
+<h3>Lucky Spin</h3>
+
+<p>Gratis setiap minggu.</p>
+
+<button onclick="showEventDetail('spin')">Detail</button>
+
+</div>
+
+<div class="event-card">
+
+<div class="event-icon">⚔️</div>
+
+<h3>Ranked Season</h3>
+
+<p>Push Rank sekarang!</p>
+
+<button onclick="showEventDetail('ranked')">Main</button>
+
+</div>
+
+</div>
+
+<!-- ================= MODAL EVENT DETAIL ================= -->
+
+<div class="event-modal-overlay" id="eventModalOverlay" onclick="closeEventDetail(event)">
+
+    <div class="event-modal">
+
+        <div class="event-modal-header">
+            <span id="modalTitle">Judul Event</span>
+            <span class="event-modal-close" onclick="closeEventDetail(event)">✕</span>
+        </div>
+
+        <div class="event-modal-body" id="modalBody">
+            <!-- diisi otomatis lewat JS -->
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+© 2026 NEXUS ML
+
+</footer>
+
+<!-- ================= CHAT AI WIDGET ================= -->
+
+<div class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+    💬
+</div>
+
+<div class="chat-box" id="chatBox">
+
+    <div class="chat-header">
+         Tanya AI NEXUS
+        <div>
+            <span class="chat-close" onclick="hapusRiwayat()" title="Hapus riwayat" style="margin-right:12px;">🗑</span>
+            <span class="chat-close" onclick="toggleChat()">✕</span>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="quick-questions" id="quickQuestions">
+        <button onclick="mulaiAnalisisBuild()">📝 Analisis Build</button>
+        <button onclick="kirimQuickChat('Build tersakit Granger apa?')">⚔️ Build Granger</button>
+        <button onclick="kirimQuickChat('Cara counter Belerick gimana?')">🛡️ Counter Belerick</button>
+        <button onclick="kirimQuickChat('Emblem terbaik buat marksman apa?')">🔥 Emblem terbaik</button>
+        <button onclick="kirimQuickChat('Cara main Hayabusa yang bener gimana?')">🧠 Cara main Hayabusa</button>
+    </div>
+
+    <div class="chat-input-area">
+        <input
+            type="text"
+            id="chatInput"
+            placeholder="Tanya tentang hero, emblem, dll..."
+            onkeydown="if(event.key==='Enter'){kirimChat()}">
+        <button onclick="kirimChat()">➤</button>
+    </div>
+
+</div>
+
+<script>
+/* ================= MODAL EVENT DETAIL ================= */
+
+const dataEvent = {
+
+    jjk: {
+        icon: "🥷",
+        title: "Event JJK x ML",
+        status: "🟢 Sedang Berlangsung",
+        waktu: "Mulai 15 Agustus 2026 — Berakhir 11 September 2026",
+        countdownId: "countdownJJK",
+        deskripsi: "Kolaborasi resmi Mobile Legends x Jujutsu Kaisen, menghadirkan skin bertema karakter-karakter Jujutsu Kaisen untuk beberapa hero favorit, lengkap dengan efek visual, recall, dan elimination effect khas anime-nya.",
+        cara: "Login setiap hari selama event berlangsung untuk kumpulkan token event dari misi harian. Token bisa ditukar di halaman event untuk hadiah bertahap, termasuk kesempatan mendapatkan skin collab.",
+        reward: "Skin bertema Jujutsu Kaisen, avatar border eksklusif, emote spesial, dan fragment skin yang bisa ditukar di toko event.",
+        syarat: "Akun minimal level 8, terhubung ke server yang mendapat event ini.",
+        tips: "Selesaikan dulu semua misi harian gratis sebelum mempertimbangkan top-up draw, karena token dari misi harian saja sudah bisa menutup sebagian reward tanpa keluar biaya."
+    },
+
+    reset: {
+        icon: "🔄",
+        title: "Reset Season Rank",
+        status: "🟡 Akan Datang",
+        waktu: "Reset dijadwalkan 16 September 2026",
+        countdownId: "countdownReset",
+        deskripsi: "Setiap akhir season, sistem rank akan di-reset otomatis. Star point dan tier kamu akan disesuaikan turun beberapa tingkat dari posisi terakhir, lalu kamu mulai push kembali di season baru.",
+        cara: "Tidak perlu aksi khusus, reset berjalan otomatis saat season berakhir. Pastikan menyelesaikan pertandingan terakhir sebelum waktu reset agar match terakhir tetap terhitung di season ini.",
+        reward: "Reward ditentukan dari rank tertinggi yang kamu capai di season ini: border eksklusif, skin fragment, tiket rekrutmen, dan Battle Point sesuai tier akhir.",
+        syarat: "Sudah menyelesaikan minimal 1 partai ranked di season berjalan untuk memenuhi syarat reward musiman.",
+        tips: "Push di beberapa hari terakhir season biasanya lebih mudah karena banyak pemain lain sudah santai atau berhenti push, jadi lawan cenderung lebih longgar."
+    },
+
+    spin: {
+        icon: "🎁",
+        title: "Lucky Spin",
+        status: "🟢 Tersedia",
+        waktu: "Reset setiap hari Senin, gratis 1x per minggu",
+        countdownId: null,
+        deskripsi: "Roda keberuntungan mingguan yang bisa memberikan hadiah acak mulai dari fragment skin, diamond, sampai emblem gratis.",
+        cara: "Buka halaman event Lucky Spin, klaim 1 spin gratis per minggu. Spin tambahan bisa didapat dari tiket hasil misi harian atau dibeli dengan diamond.",
+        reward: "Fragment skin, diamond, Battle Point, emblem set, dan hadiah jackpot berupa skin epic/legend secara acak.",
+        syarat: "Akun aktif, tidak ada syarat level minimum.",
+        tips: "Kumpulkan tiket gratis dari misi harian dulu sebelum beli spin tambahan pakai diamond, supaya lebih hemat."
+    },
+
+    ranked: {
+        icon: "⚔️",
+        title: "Ranked Season",
+        status: "🟢 Sedang Berlangsung",
+        waktu: "Season berjalan sekitar 2 bulan per periode",
+        countdownId: null,
+        deskripsi: "Mode kompetitif utama Mobile Legends dengan sistem tier dari Warrior hingga Mythical Glory, menentukan posisi kompetitif kamu dibanding pemain lain di server yang sama.",
+        cara: "Masuk ke menu Ranked, pilih role, lalu bertanding. Kemenangan menambah star, kekalahan pada tier tertentu bisa mengurangi star.",
+        reward: "Skin eksklusif untuk pemain top rank, avatar border musiman, emblem set, dan Battle Point berdasarkan tier akhir season.",
+        syarat: "Akun minimal level 8 untuk membuka mode Ranked.",
+        tips: "Push di awal season selagi rata-rata skill lawan masih beragam, dan fokus main role/hero yang paling kamu kuasai daripada ikut-ikutan tren."
+    }
+
+};
+
+function showEventDetail(key){
+
+    let data = dataEvent[key];
+    if(!data) return;
+
+    let html = "";
+
+    html += '<div class="event-modal-icon">' + data.icon + '</div>';
+    html += '<div class="event-modal-status">' + data.status + '</div>';
+    html += '<div class="event-modal-row"><strong>🕒 Waktu:</strong> ' + data.waktu + '</div>';
+
+    if(data.countdownId){
+        html += '<div class="event-modal-row"><strong>⏳ Countdown:</strong> <span id="modalCountdown">Menghitung...</span></div>';
+    }
+
+    html += '<div class="event-modal-section"><strong>📖 Tentang Event</strong><p>' + data.deskripsi + '</p></div>';
+    html += '<div class="event-modal-section"><strong>🎮 Cara Mengikuti</strong><p>' + data.cara + '</p></div>';
+    html += '<div class="event-modal-section"><strong>🏆 Reward</strong><p>' + data.reward + '</p></div>';
+    html += '<div class="event-modal-section"><strong>📋 Syarat</strong><p>' + data.syarat + '</p></div>';
+    html += '<div class="event-modal-section"><strong>💡 Tips</strong><p>' + data.tips + '</p></div>';
+
+    document.getElementById("modalTitle").innerText = data.title;
+    document.getElementById("modalBody").innerHTML = html;
+    document.getElementById("eventModalOverlay").classList.add("open");
+
+    if(data.countdownId){
+        let elemenAsli = document.getElementById(data.countdownId);
+        let modalCd = document.getElementById("modalCountdown");
+        if(elemenAsli && modalCd){
+            modalCd.innerText = elemenAsli.innerText;
+            window.modalCountdownSync = setInterval(function(){
+                if(document.getElementById("modalCountdown")){
+                    document.getElementById("modalCountdown").innerText = elemenAsli.innerText;
+                }
+            }, 1000);
+        }
+    }
+
+}
+
+function closeEventDetail(e){
+
+    if(e.target.id !== "eventModalOverlay" && !e.target.classList.contains("event-modal-close")) return;
+
+    document.getElementById("eventModalOverlay").classList.remove("open");
+    if(window.modalCountdownSync) clearInterval(window.modalCountdownSync);
+
+}
+
+const clickSound = new Audio("click.mp3");
+
+function playClick(url){
+
+    clickSound.currentTime = 0;
+    clickSound.play();
+
+    setTimeout(function(){
+        location.href = url;
+    },180);
+
+}
+
+function searchHero(){
+
+    let input = document.getElementById("searchHero").value.toLowerCase();
+    let role = document.getElementById("filterRole").value;
+
+    let cards = document.querySelectorAll(".hero-grid .card");
+
+    cards.forEach(function(card){
+
+        let nama = card.querySelector("h3").innerText.toLowerCase();
+        let heroRole = card.querySelector("p").innerText.toLowerCase();
+
+        let cocokNama = nama.includes(input);
+        let cocokRole = (role === "all" || heroRole === role);
+
+        if(cocokNama && cocokRole){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+document.querySelectorAll(".menu button").forEach(function(btn){
+
+    btn.addEventListener("click",function(){
+
+        clickSound.currentTime = 0;
+        clickSound.play();
+
+    });
+
+});
+
+/* ================= COUNTDOWN GENERIC ================= */
+
+function buatCountdown(idElemen, tanggalTarget, idInterval){
+
+    function update(){
+
+        let sekarang = new Date().getTime();
+        let sisa = tanggalTarget - sekarang;
+
+        let elemen = document.getElementById(idElemen);
+
+        if(sisa <= 0){
+            elemen.innerText = "Event telah berakhir";
+            clearInterval(window[idInterval]);
+            return;
+        }
+
+        let hari = Math.floor(sisa / (1000 * 60 * 60 * 24));
+        let jam = Math.floor((sisa % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let menit = Math.floor((sisa % (1000 * 60 * 60)) / (1000 * 60));
+        let detik = Math.floor((sisa % (1000 * 60)) / 1000);
+
+        elemen.innerText = hari + "h " + jam + "j " + menit + "m " + detik + "d";
+
+    }
+
+    update();
+    window[idInterval] = setInterval(update, 1000);
+
+}
+
+/* Event JJK x ML - berakhir 11 September 2026 */
+const tanggalJJK = new Date("2026-09-11T23:59:59").getTime();
+buatCountdown("countdownJJK", tanggalJJK, "intervalJJK");
+
+/* Reset Season Rank - berakhir 16 September 2026 */
+const tanggalReset = new Date("2026-09-16T23:59:59").getTime();
+buatCountdown("countdownReset", tanggalReset, "intervalReset");
+
+/* ================= CAROUSEL BANNER ================= */
+
+let slideAktif = 0;
+const totalSlide = 3;
+const trackCarousel = document.getElementById("carouselTrack");
+const dotCarousel = document.querySelectorAll(".dot");
+
+function tampilkanSlide(index){
+
+    slideAktif = index;
+
+    trackCarousel.style.transform = "translateX(" + (-index * 100) + "%)";
+
+    dotCarousel.forEach(function(dot, i){
+        dot.classList.toggle("active", i === index);
+    });
+
+}
+
+function gotoSlide(index){
+    tampilkanSlide(index);
+    resetAutoSlide();
+}
+
+function slideBerikutnya(){
+    let next = (slideAktif + 1) % totalSlide;
+    tampilkanSlide(next);
+}
+
+let autoSlide = setInterval(slideBerikutnya, 4000);
+
+function resetAutoSlide(){
+    clearInterval(autoSlide);
+    autoSlide = setInterval(slideBerikutnya, 4000);
+}
+
+/* ================= CHAT AI ================= */
+
+const chatBox = document.getElementById("chatMessages");
+
+function simpanRiwayat(riwayat){
+    localStorage.setItem("nexusChatHistory", JSON.stringify(riwayat));
+}
+
+function ambilRiwayat(){
+    let data = localStorage.getItem("nexusChatHistory");
+    return data ? JSON.parse(data) : [];
+}
+
+function tambahBubble(role, teks){
+    let bubbleClass = role === "user" ? "chat-msg-user" : "chat-msg-ai";
+    chatBox.innerHTML += '<div class="chat-msg ' + bubbleClass + '">' + teks + '</div>';
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function muatUlangChat(){
+
+    let riwayat = ambilRiwayat();
+
+    if(riwayat.length === 0){
+        let sapaan = "Halo! Tanya aku apa aja soal hero, build, emblem, atau counter di Mobile Legends 👋";
+        tambahBubble("ai", sapaan);
+        riwayat.push({ role: "ai", teks: sapaan });
+        simpanRiwayat(riwayat);
+    }else{
+        riwayat.forEach(function(pesan){
+            tambahBubble(pesan.role, pesan.teks);
+        });
+    }
+
+}
+
+muatUlangChat();
+
+function toggleChat(){
+    document.getElementById("chatBox").classList.toggle("open");
+}
+
+function hapusRiwayat(){
+    localStorage.removeItem("nexusChatHistory");
+    chatBox.innerHTML = "";
+    muatUlangChat();
+}
+
+function kirimQuickChat(teks){
+    document.getElementById("chatInput").value = teks;
+    kirimChat();
+}
+
+function mulaiAnalisisBuild(){
+    let input = document.getElementById("chatInput");
+    input.value = "Build gua [nama hero]: item1, item2, item3, item4, item5, item6";
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+}
+
+async function kirimChat(){
+
+    let input = document.getElementById("chatInput");
+    let pesan = input.value.trim();
+
+    if(pesan === "") return;
+
+    let riwayat = ambilRiwayat();
+
+    tambahBubble("user", pesan);
+    riwayat.push({ role: "user", teks: pesan });
+    simpanRiwayat(riwayat);
+
+    input.value = "";
+
+    chatBox.innerHTML += '<div class="chat-msg chat-msg-ai" id="loadingMsg">Nexus sedang berpikir<span class="thinking-dots"><span>.</span><span>.</span><span>.</span></span></div>';
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try{
+
+        let historyUntukAI = riwayat.map(function(p){
+            return {
+                role: p.role === "user" ? "user" : "assistant",
+                content: p.teks
+            };
+        });
+
+        const response = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                messages: historyUntukAI
+            })
+        });
+
+        const data = await response.json();
+
+        let jawaban;
+
+        if(data.error){
+            jawaban = "ERROR: " + data.error.message;
+        }else if(data.choices && data.choices[0] && data.choices[0].message){
+            jawaban = data.choices[0].message.content;
+        }else{
+            jawaban = "Maaf, ada kesalahan. Coba lagi ya. (respons kosong)";
+        }
+
+        document.getElementById("loadingMsg").remove();
+        tambahBubble("ai", jawaban);
+
+        riwayat.push({ role: "ai", teks: jawaban });
+        simpanRiwayat(riwayat);
+
+    }catch(err){
+        document.getElementById("loadingMsg").remove();
+        tambahBubble("ai", "Gagal terhubung: " + err.message);
+    }
+
+}
+
+</script>
+</body>
+</html>
