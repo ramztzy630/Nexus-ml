@@ -26,12 +26,22 @@ export async function onRequestPost(context) {
 
     let { salt, hash } = await hashPassword(password);
 
-    let result = await createUserDoc(env, usernameLower, {
+    let result;
+
+try {
+    result = await createUserDoc(env, usernameLower, {
         username: username,
         passwordSalt: salt,
         passwordHash: hash,
         createdAt: Date.now()
     });
+} catch (error) {
+    console.error("REGISTER FIRESTORE ERROR:", error);
+
+    return jsonResponse({
+        error: "Server gagal mengakses database."
+    }, 500);
+}
 
     if (!result.ok) {
     return jsonResponse({
