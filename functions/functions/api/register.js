@@ -34,8 +34,11 @@ export async function onRequestPost(context) {
     });
 
     if (!result.ok) {
-        return jsonResponse({ error: "Username sudah digunakan." }, 409);
-    }
+    return jsonResponse({
+        error: "Firebase gagal",
+        detail: result.error
+    }, 500);
+}
 
     return jsonResponse({ success: true, message: "Registrasi berhasil, silakan login." });
 
