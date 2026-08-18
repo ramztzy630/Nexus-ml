@@ -25,7 +25,7 @@
 <input
 type="text"
 id="searchHero"
-placeholder="🔍 Cari Hero..."
+placeholder=" Cari Hero..."
 onkeyup="searchHero()">
 
 <select id="filterRole" onchange="searchHero()">
@@ -53,12 +53,12 @@ onkeyup="searchHero()">
 
         <div class="carousel-slide">
             <img src="images/IMG_20260815_091531_312.jpg">
-            <div class="carousel-caption">🆕 Hero Baru</div>
+            <div class="carousel-caption"> Hero Baru</div>
         </div>
 
         <div class="carousel-slide">
             <img src="images/IMG_20260815_091801_066.jpg">
-            <div class="carousel-caption">✨ Skin Baru</div>
+            <div class="carousel-caption"> Skin Baru</div>
         </div>
 
     </div>
@@ -91,7 +91,7 @@ onkeyup="searchHero()">
 
 </section>
 
-<h2 id="hero">🔥 Hero Populer</h2>
+<h2 id="hero"> Hero Populer</h2>
 
 <section class="hero-grid">
 
@@ -176,7 +176,7 @@ onkeyup="searchHero()">
 
 <!-- ================= TIER LIST ================= -->
 
-<h2 id="tier" class="section-title">📊 Tier List</h2>
+<h2 id="tier" class="section-title"> Tier List</h2>
 
 <div class="tier-grid">
 
@@ -196,7 +196,7 @@ onkeyup="searchHero()">
 
 <!-- ================= EVENT ================= -->
 
-<h2 id="event" class="section-title">📅 Event MLBB</h2>
+<h2 id="event" class="section-title"> Event MLBB</h2>
 
 <div class="event-grid">
 
@@ -300,7 +300,7 @@ onkeyup="searchHero()">
             <span class="event-modal-close" onclick="closeAuthModal(event,'profileModalOverlay',true)">✕</span>
         </div>
         <div class="auth-modal-body">
-            <div class="profile-avatar">👤</div>
+            <div class="profile-avatar"></div>
             <p class="profile-username" id="profileUsername"></p>
             <button class="auth-submit-btn auth-logout-btn" onclick="doLogout()">Logout</button>
         </div>
@@ -326,11 +326,11 @@ onkeyup="searchHero()">
     <div class="chat-messages" id="chatMessages"></div>
 
     <div class="quick-questions" id="quickQuestions">
-        <button onclick="mulaiAnalisisBuild()">📝 Analisis Build</button>
-        <button onclick="kirimQuickChat('Build tersakit Granger apa?')">⚔️ Build Granger</button>
-        <button onclick="kirimQuickChat('Cara counter Belerick gimana?')">🛡️ Counter Belerick</button>
-        <button onclick="kirimQuickChat('Emblem terbaik buat marksman apa?')">🔥 Emblem terbaik</button>
-        <button onclick="kirimQuickChat('Cara main Hayabusa yang bener gimana?')">🧠 Cara main Hayabusa</button>
+        <button onclick="mulaiAnalisisBuild()"> Analisis Build</button>
+        <button onclick="kirimQuickChat('Build tersakit Granger apa?')"> Build Granger</button>
+        <button onclick="kirimQuickChat('Cara counter Belerick gimana?')"> Counter Belerick</button>
+        <button onclick="kirimQuickChat('Emblem terbaik buat marksman apa?')"> Emblem terbaik</button>
+        <button onclick="kirimQuickChat('Cara main Hayabusa yang bener gimana?')"> Cara main Hayabusa</button>
     </div>
 
     <div class="chat-input-area">
@@ -446,10 +446,10 @@ async function checkAuthStatus(){
         let data = await res.json();
         if(data.loggedIn){
             currentUsername = data.username;
-            document.getElementById("authTriggerBtn").innerText = "👤 " + data.username;
+            document.getElementById("authTriggerBtn").innerText = " " + data.username;
         }else{
             currentUsername = null;
-            document.getElementById("authTriggerBtn").innerText = "👤 Login";
+            document.getElementById("authTriggerBtn").innerText = " Login";
         }
     }catch(err){
         console.error("Gagal cek status login:", err);
@@ -546,7 +546,7 @@ async function doLogin(){
 async function doLogout(){
     await fetch("/api/logout", { method: "POST", credentials: "include" });
     currentUsername = null;
-    document.getElementById("authTriggerBtn").innerText = "👤 Login";
+    document.getElementById("authTriggerBtn").innerText = " Login";
     document.getElementById("profileModalOverlay").classList.remove("open");
 }
 
@@ -555,9 +555,9 @@ async function doLogout(){
 const dataEvent = {
 
     jjk: {
-        icon: "🥷",
+        icon: "",
         title: "Event JJK x ML",
-        status: "🟢 Sedang Berlangsung",
+        status: " Sedang Berlangsung",
         waktu: "Mulai 15 Agustus 2026 — Berakhir 11 September 2026",
         countdownId: "countdownJJK",
         deskripsi: "Kolaborasi resmi Mobile Legends x Jujutsu Kaisen, menghadirkan skin bertema karakter-karakter Jujutsu Kaisen untuk beberapa hero favorit, lengkap dengan efek visual, recall, dan elimination effect khas anime-nya.",
@@ -568,9 +568,9 @@ const dataEvent = {
     },
 
     reset: {
-        icon: "🔄",
+        icon: "",
         title: "Reset Season Rank",
-        status: "🟡 Akan Datang",
+        status: " Akan Datang",
         waktu: "Reset dijadwalkan 16 September 2026",
         countdownId: "countdownReset",
         deskripsi: "Setiap akhir season, sistem rank akan di-reset otomatis. Star point dan tier kamu akan disesuaikan turun beberapa tingkat dari posisi terakhir, lalu kamu mulai push kembali di season baru.",
@@ -581,9 +581,9 @@ const dataEvent = {
     },
 
     spin: {
-        icon: "🎁",
+        icon: "",
         title: "Lucky Spin",
-        status: "🟢 Tersedia",
+        status: " Tersedia",
         waktu: "Reset setiap hari Senin, gratis 1x per minggu",
         countdownId: null,
         deskripsi: "Roda keberuntungan mingguan yang bisa memberikan hadiah acak mulai dari fragment skin, diamond, sampai emblem gratis.",
@@ -594,9 +594,9 @@ const dataEvent = {
     },
 
     ranked: {
-        icon: "⚔️",
+        icon: "",
         title: "Ranked Season",
-        status: "🟢 Sedang Berlangsung",
+        status: " Sedang Berlangsung",
         waktu: "Season berjalan sekitar 2 bulan per periode",
         countdownId: null,
         deskripsi: "Mode kompetitif utama Mobile Legends dengan sistem tier dari Warrior hingga Mythical Glory, menentukan posisi kompetitif kamu dibanding pemain lain di server yang sama.",
@@ -616,17 +616,17 @@ function showEventDetail(key){
     let html = "";
     html += '<div class="event-modal-icon">' + data.icon + '</div>';
     html += '<div class="event-modal-status">' + data.status + '</div>';
-    html += '<div class="event-modal-row"><strong>🕒 Waktu:</strong> ' + data.waktu + '</div>';
+    html += '<div class="event-modal-row"><strong> Waktu:</strong> ' + data.waktu + '</div>';
 
     if(data.countdownId){
-        html += '<div class="event-modal-row"><strong>⏳ Countdown:</strong> <span id="modalCountdown">Menghitung...</span></div>';
+        html += '<div class="event-modal-row"><strong> Countdown:</strong> <span id="modalCountdown">Menghitung...</span></div>';
     }
 
-    html += '<div class="event-modal-section"><strong>📖 Tentang Event</strong><p>' + data.deskripsi + '</p></div>';
-    html += '<div class="event-modal-section"><strong>🎮 Cara Mengikuti</strong><p>' + data.cara + '</p></div>';
-    html += '<div class="event-modal-section"><strong>🏆 Reward</strong><p>' + data.reward + '</p></div>';
-    html += '<div class="event-modal-section"><strong>📋 Syarat</strong><p>' + data.syarat + '</p></div>';
-    html += '<div class="event-modal-section"><strong>💡 Tips</strong><p>' + data.tips + '</p></div>';
+    html += '<div class="event-modal-section"><strong> Tentang Event</strong><p>' + data.deskripsi + '</p></div>';
+    html += '<div class="event-modal-section"><strong> Cara Mengikuti</strong><p>' + data.cara + '</p></div>';
+    html += '<div class="event-modal-section"><strong> Reward</strong><p>' + data.reward + '</p></div>';
+    html += '<div class="event-modal-section"><strong> Syarat</strong><p>' + data.syarat + '</p></div>';
+    html += '<div class="event-modal-section"><strong> Tips</strong><p>' + data.tips + '</p></div>';
 
     document.getElementById("modalTitle").innerText = data.title;
     document.getElementById("modalBody").innerHTML = html;
